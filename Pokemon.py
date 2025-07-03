@@ -41,13 +41,13 @@ class Pokemon:
         
         if result == "win":
             print(f"{self.name} wins!")
-            other.hp -= 3
+            other.hp -= 10
             if other.hp < 0:
                 other.ho = 0
             print(f"{other.name} loses 3 HP! ({other.hp}/{other.max_hp} HP)")
         elif result == "lose":
             print(f"{self.name} loses!")
-            self.hp -=3 
+            self.hp -= 10
             if self.hp < 0:
                 self.hp = 0
             print(f"{self.name} loses 3 HP! ({self.hp}/{self.max_hp} HP)")
