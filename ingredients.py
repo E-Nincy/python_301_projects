@@ -35,5 +35,17 @@ c.grind()  # OUTPUT: AttributeError: 'Ingredient' object has no attribute 'grind
 
 
 # override the expire() method
+class Spice(Ingredient):
+    """Models a spice to flavor your food."""
+
+    def expire(self):
+        print(f"your {self.name} has expired. it's probably still good.")
+        self.name = "old " + self.name
+        
+c = Ingredient("carrots", 3)
+p = Spice("pepper", 20)
+
+c.expire()  # OUTPUT: whoops, these carrots went bad...
+p.expire()  # OUTPUT: your pepper has expired. it's probably still good.
 
 # customize the __init__() method
