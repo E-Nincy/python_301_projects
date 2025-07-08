@@ -1,6 +1,6 @@
 import time
 import random
-from actors import Hero, Opponent
+from actors import Hero, Opponent, WeakOpponent, FinalBossOpponent
 
 def main():
     print_welcome()
@@ -20,20 +20,17 @@ Good luck, brave warrior!
 """)
      
 def play_game():
-     opponents = [
-          Opponent('Slow Wifi', 1),
-          Opponent('Pop-up Ad', 3),
-          Opponent('Infinite Captcha', 5),
-          Opponent('Error 404', 7),
-          Opponent('Blue Screen', 10),
-          Opponent('Grumpy Virus', 15),
-          Opponent('Forced Update', 20),
-          Opponent('Terms & Conditions', 30)
-     ]
+    opponents = [
+        WeakOpponent('Spam Email', 1),
+        WeakOpponent('Lag Spike', 2),
+        Opponent('Captcha Loop', 4),
+        Opponent('Blue Screen', 6),
+        FinalBossOpponent('Microsoft Clippy', 15, "Annoying Help Popups")
+    ]
 
-     hero = Hero("Sir Python", 5)
+    hero = Hero("Sir Python", 5)
 
-     while opponents:
+    while opponents:
           current_opponent = random.choice(opponents)
           print(f"A wild {current_opponent.name} (Level {current_opponent.level}) appears!")
 
@@ -64,7 +61,7 @@ def play_game():
             print("\nThanks for playing! See you next time, digital hero.")
             break
 
-     if not opponents:
+    if not opponents:
         print("🎉 You’ve defeated all digital threats! The web is safe again. 🎉")
 
 if __name__ == '__main__':
