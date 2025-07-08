@@ -10,10 +10,10 @@ class Hero:
         print(f"{self.name} attacks {opponent.name}!")
 
         hero_roll = random.randint(1, 12) * self.level
-        opp_roll = random.randint(1, 12) * opponent.level
+        opp_roll = opponent.attack(self)
 
-        print(f"You roll a {hero_roll}...")
-        print(f"{opponent.name} rolls a {opp_roll}...")
+        print(f"You rolled {hero_roll}...")
+        print(f"{opponent.name} rolled {opp_roll}...")
 
         if hero_roll >= opp_roll:
             print(f"Victory! {self.name} has defeated {opponent.name}.\n")
@@ -23,10 +23,29 @@ class Hero:
             return False
 
 class Opponent:
-    """The enemies you'll face in the game."""
     def __init__(self, name, level):
         self.name = name
         self.level = level
 
+    def attack(self, hero):
+        return random.randint(1,12) * self.level
+    
     def __repr__(self):
-        return f"Opponent: {self.name} (Level {self.level})"
+        return f"{self.name} (level{self.level})"
+    
+class Weakopponent (Opponent):
+    def  attack(self, hero):
+        print(f"{self.name} stumbles a little...")
+        return random.randint(1, 6) * self.level
+    
+class FinalBossOpponent(Opponent):
+    def __init__(self, name, level, special_power):
+        super().__init__(name, level)
+        self.special_power = special_power
+
+    def attack(self, hero):
+        base = random.randint(6, 12) * self.level
+        if random.randint() < 0.3: 
+            print(f"{self.name} uses their special power: {self.special_power}")
+            return base * 2
+        return base
