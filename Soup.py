@@ -53,4 +53,4 @@ if __name__ == "__main__":
     soup_of_the_day = Soup(carrot, chicken, cumin)
 
     # Cook (search for recipe)
-    soup_of_the_day.cook()
+    soup_of_the_day.cook() 
