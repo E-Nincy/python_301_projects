@@ -33,7 +33,7 @@ class Opponent:
     def __repr__(self):
         return f"{self.name} (level{self.level})"
     
-class Weakopponent (Opponent):
+class WeakOpponent (Opponent):
     def  attack(self, hero):
         print(f"{self.name} stumbles a little...")
         return random.randint(1, 6) * self.level
