@@ -45,7 +45,7 @@ class FinalBossOpponent(Opponent):
 
     def attack(self, hero):
         base = random.randint(6, 12) * self.level
-        if random.randint() < 0.3: 
+        if random.random() < 0.3:
             print(f"{self.name} uses their special power: {self.special_power}")
             return base * 2
         return base
