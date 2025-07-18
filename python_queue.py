@@ -3,6 +3,14 @@ class Node:
         self.value = value
         self.next = next
 
+def dequeue_with_logging(func):
+    def wrapper(self):
+        print(f"Gretting item... Current queue size: {self.length}")
+        item = func(self)
+        print(f"Got item: {item}. Updated queue siue: {self.length}")
+        return item
+    return wrapper
+
 class Queue:
     def __init__(self):
         self.head = None
@@ -28,6 +36,7 @@ class Queue:
             self.tail = new_node
         self.length += 1
 
+    @dequeue_with_logging
     def dequeue(self):
         if self.is_empty():
             return None
